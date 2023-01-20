@@ -1,0 +1,53 @@
+*Ticket Breakdown suggestion for the new 'Custom Agent Id' Feature*
+
+Currently, the id of each Agent on the reports we generate is their internal database id. 
+We'd like to add the ability for Facilities to save their own custom ids for each Agent they 
+work with and use that id when generating reports for them.
+
+Ticket 1
+*Title*
+Allow facilities to save a custom id for each Agent (BE)
+
+*Description*
+We need to allow a user to assign a custom id to identify the 'Agents' on the reports and maybe other places.
+
+*Acceptance Criteria*
+- A 'custom_id' field, that accepts string values and it's not required, with size less or equal of 256 characters added 
+on the 'Agents' table.
+- The 'custom_id' property on the 'Agent' Model
+- The get endpoints updated to return this new field where relevant
+- The post/patch/put endpoints updated to receive this new param, allowing it to be saved or updated
+
+*Estimation*
+- ~1 to 2 days of work. 
+
+
+Ticket 2
+*Title*
+Add a 'Custom Agent Id' field on the 'Agent' form
+
+*Description*
+Add a new text field 'Custom Agent Id' to store the user custom identifier for an 'Agent'.
+
+*Acceptance Criteria*
+- A new not required text field is created, with the label 'Custom Agent Id', that accepts 256 characters max
+- When the value of the text field is updated/added, the form is saved and the page is reloaded, the value is still there
+- Empty 'Custom Agent Id' field doesn't prevent the Agent form to be saved
+
+*Estimation*
+- ~1 day of work.
+
+
+Ticket 3
+*Title*
+Update Reports to use the 'Custom Agent Id' as the Agent identifier
+
+*Description*
+Currently, our reports that uses 'Agent' data has our internal database identifier as the 'Agent' id.
+Update those reports to use the 'custom_id' as the new 'Agent' identifier
+
+*Acceptance Criteria*
+- Reports use now the 'custom_id' as the agent identifier
+
+*Estimation*
+- ~1 day of work.
